@@ -1,0 +1,78 @@
+<%- include("layout") -%>
+
+<div class="todo-container">
+  <h1 class="todo-title">ToDo List</h1>
+
+  <a href="/web/add" class="add-todo-btn">Add New ToDo</a>
+
+  <div class="filter-buttons">
+    <button onclick="filterTodos('')" class="filter-btn" id="all-btn">
+      All
+    </button>
+    <button
+      onclick="filterTodos('UPCOMING')"
+      class="filter-btn"
+      id="upcoming-btn"
+    >
+      Upcoming
+    </button>
+    <button
+      onclick="filterTodos('IN_PROGRESS')"
+      class="filter-btn"
+      id="in-progress-btn"
+    >
+      In Progress
+    </button>
+    <button onclick="filterTodos('DONE')" class="filter-btn" id="done-btn">
+      Done
+    </button>
+    <button onclick="filterTodos('FAILED')" class="filter-btn" id="failed-btn">
+      Failed
+    </button>
+    <button
+      onclick="filterTodos('DEFERRED')"
+      class="filter-btn"
+      id="deferred-btn"
+    >
+      Deferred
+    </button>
+  </div>
+
+  <table class="todo-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Short Description</th>
+        <th>Date & Time</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="todos-list">
+      <%- include('partials/todo-list-rows', { todos: body }) %>
+    </tbody>
+  </table>
+
+  <script>
+    function filterTodos(status) {
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach((button) => button.classList.remove('active'));
+
+      const activeButton = document.getElementById(status + '-btn');
+      if (activeButton) {
+        activeButton.classList.add('active');
+      }
+
+      const url = status ? `/api/todos?status=${status}` : '/api/todos';
+
+      // AJAX GET request to the server with the filter
+      fetch(url)
+        .then((response) => response.text())
+        .then((data) => {
+          document.documentElement.innerHTML = data;
+        })
+        .catch((error) => console.error('Error:', error));
+    }
+  </script>
+</div>

@@ -1,0 +1,124 @@
+<style>
+  .todo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .todo-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .add-todo-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-bottom: 16px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .add-todo-btn:hover {
+    background-color: #45a049;
+  }
+
+  .filter-buttons {
+    margin-bottom: 20px;
+  }
+
+  .filter-btn {
+    padding: 10px 20px;
+    background-color: #f3f4f6;
+    color: #333;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    background-color: #dcdcdc;
+  }
+
+  .filter-btn:focus {
+    outline: 2px solid #4caf50;
+    outline-offset: 2px;
+  }
+
+  .todo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .todo-table th,
+  .todo-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .todo-table th {
+    background-color: #f3f4f6;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .todo-table tr:hover {
+    background-color: #f9f9f9;
+  }
+
+  .filter-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    background-color: #e0e0e0;
+  }
+
+  .filter-btn.active {
+    border: 2px solid green;
+    background-color: #e8f5e9;
+    font-weight: bold;
+  }
+
+  .filter-btn:focus {
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
+    .todo-title {
+      font-size: 2rem;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      font-size: 0.75rem;
+    }
+
+    .todo-table th,
+    .todo-table td {
+      padding: 8px;
+    }
+
+    .add-todo-btn {
+      padding: 10px 20px;
+      font-size: 0.875rem;
+    }
+  }
+</style>

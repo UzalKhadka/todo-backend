@@ -1,0 +1,37 @@
+<% todos.forEach(todo => { %>
+<tr style="border: 1px solid #ddd; padding: 8px; text-align: left">
+  <td
+    style="
+      border: 1px solid #ddd;
+      padding: 8px;
+      font-weight: bold;
+      background-color: #f4f4f4;
+    "
+  >
+    <%= todo.name %>
+  </td>
+  <td style="border: 1px solid #ddd; padding: 8px">
+    <%= todo.shortDescription %>
+  </td>
+  <td style="border: 1px solid #ddd; padding: 8px">
+    <%= new Date(todo.dateTime).toLocaleString() %>
+  </td>
+  <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold">
+    <%= (todo.status).split('_').map(word => word.charAt(0).toUpperCase() +
+    word.slice(1).toLowerCase() ).join(' ') || todo.status %>
+  </td>
+  <td style="border: 1px solid #ddd; padding: 8px">
+    <a
+      href="/web/edit/<%= todo._id %>"
+      style="text-decoration: none; color: #007bff; margin-right: 10px"
+      >Edit</a
+    >
+    <a
+      href="/api/todos/delete/<%= todo._id %>"
+      style="text-decoration: none; color: #dc3545"
+      onclick="return confirm('Are you sure?')"
+      >Delete</a
+    >
+  </td>
+</tr>
+<% }) %>
